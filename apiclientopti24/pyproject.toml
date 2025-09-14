@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "apiclientopti24"
+version = "0.2.0"
+description = "Async API клиент для работы с сервисом топливных карт Газпромнефть"
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+license = "MIT"
+packages = [{ include = "api_client_opti24", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+httpx = "^0.27.0"
+pydantic = "^2.6.0"
+tenacity = "^9.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.0"
+pytest-asyncio = "^0.23.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
