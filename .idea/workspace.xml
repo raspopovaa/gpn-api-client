@@ -4,51 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89f850a9-e251-45cf-a35e-d2fd612bbbab" name="Список изменений" comment="new repository">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
+    <list default="true" id="89f850a9-e251-45cf-a35e-d2fd612bbbab" name="Список изменений" comment="add new methods">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiclientopti24/models/transactions.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/transactions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiclientopti24/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/example.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/reports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/transport.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/transport.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/.github/workflows/ci.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/card_group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/region_limits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/pyproject.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/restrictions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/Invites.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/card_group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/limits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/region_limits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/examples/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/restrictions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/contract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/transaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/accounts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/card_groups.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/contracts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/directories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/fuel_cards.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/invites.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/invoices.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/limits.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/limits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/merchants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/reports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/templates.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/transactions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/users.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/virtual_cards.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/wallet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/transport.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +26,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
@@ -79,30 +43,102 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests for test_auth.test_auth.executor&quot;: &quot;Run&quot;,
-    &quot;Python.example.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/andrejraspopov/IdeaProjects/APIv2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test_auth.test_auth.executor": "Run",
+    "Python tests.Python tests for test_auth.test_auth_user_sets_session_and_contract_id.executor": "Debug",
+    "Python tests.Python tests for test_auth.test_auth_user_with_contract_number.executor": "Run",
+    "Python.example (1).executor": "Run",
+    "Python.example.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/andrejraspopov/IdeaProjects/APIv2",
+    "project.structure.last.edited": "Фасеты",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/examples" />
+      <recent name="$PROJECT_DIR$/examples2" />
+      <recent name="$PROJECT_DIR$/src/api_client_opti24" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/apiclientopti24" />
-      <recent name="$PROJECT_DIR$/APIClientOPTI24 (2)" />
+      <recent name="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.example">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="docs" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python tests.Python tests for test_auth.test_auth_user_sets_session_and_contract_id">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="apiclientopti24" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="apiclientopti24" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="example (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="APIv2" />
+      <module name="apiclientopti24" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -123,13 +159,59 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for test_auth.test_auth" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="APIv2" />
+    <configuration default="true" type="Tox" factoryName="Tox">
+      <module name="apiclientopti24" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/apiclientopti24/tests" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Docutils task">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docs" factoryName="Sphinx task">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="docutils_input_file" value="" />
+      <option name="docutils_output_file" value="" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_auth.test_auth" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -138,10 +220,77 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_auth.test_auth_user_sets_session_and_contract_id" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_auth.test_auth_user_sets_session_and_contract_id&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_auth.test_auth_user_with_contract_number" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_auth.test_auth_user_with_contract_number&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Autodetect">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="apiclientopti24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.example" />
+        <item itemvalue="Python tests.Python tests for test_auth.test_auth_user_sets_session_and_contract_id" />
+        <item itemvalue="Python tests.Python tests for test_auth.test_auth_user_with_contract_number" />
         <item itemvalue="Python tests.Python tests for test_auth.test_auth" />
+        <item itemvalue="Python.example" />
+        <item itemvalue="Python.example (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -170,11 +319,66 @@
       <option name="project" value="LOCAL" />
       <updated>1757862698780</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add new methods">
+      <option name="closed" value="true" />
+      <created>1758045875413</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758045875413</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add new methods">
+      <option name="closed" value="true" />
+      <created>1758054374384</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758054374384</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new repository" />
-    <option name="LAST_COMMIT_MESSAGE" value="new repository" />
+    <MESSAGE value="add new methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="add new methods" />
   </component>
 </project>
