@@ -2,7 +2,7 @@
 name = "apiclientopti24"
 version = "0.2.0"
 description = "Async API клиент для работы с сервисом топливных карт Газпромнефть"
-authors = ["Your Name <you@example.com>"]
+authors = ["andrey.raspopov@gmail.com"]
 readme = "README.md"
 license = "MIT"
 packages = [{ include = "api_client_opti24", from = "src" }]

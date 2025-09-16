@@ -1,10 +1,16 @@
 from typing import List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class TransactionItem(BaseModel):
-    """Элемент транзакции (товар/услуга)."""
-
+    model_config = ConfigDict(extra_forbid=True)
+    """
+     Элемент транзакции (товар/услуга).
+    
+     Attributes:
+         id (str): Уникальный идентификатор элемента.
+         product (Optional[str]): Название товара или услуги.
+     """
     id: str
     rrn: Optional[str] = None
     product: Optional[str] = None
@@ -20,14 +26,14 @@ class TransactionItem(BaseModel):
 
 
 class TransactionRequestInfo(BaseModel):
-    """Информация о запросе, инициировавшем транзакцию."""
+    model_config = ConfigDict(extra_forbid=True)
 
     type: Optional[str] = None
     name: Optional[str] = None
 
 
 class Transaction(BaseModel):
-    """Модель транзакции."""
+    model_config = ConfigDict(extra_forbid=True)
 
     id: str
     time: Optional[str] = None  # v1
@@ -65,12 +71,14 @@ class Transaction(BaseModel):
 
 class TransactionList(BaseModel):
     """
-    Список транзакций по договору.
+     Список транзакций по договору.
 
-    Attributes:
-        total_count (int): Общее количество транзакций.
-        result (List[Transaction]): Список транзакций.
+     Attributes:
+         total_count (int): Общее количество транзакций.
+         result (List[Transaction]): Список транзакций.
 
-    """
+     """
+    model_config = ConfigDict(extra_forbid=True)
+
     total_count: int
     result: List[Transaction] = Field(default_factory=list)

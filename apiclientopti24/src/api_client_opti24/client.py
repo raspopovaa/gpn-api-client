@@ -1,8 +1,13 @@
 import logging
 from typing import Optional, Dict, Any
 
+from .services.Invites import InviteMixin
+from .services.card_group import CardGroupsMixin
 from .services.contract import ContractMixin
 from .services.ewallet import EwalletMixin
+from .services.limits import LimitsMixin
+from .services.region_limits import RegionLimitsMixin
+from .services.restrictions import RestrictionsMixin
 from .transport import AsyncTransport
 from .services import *
 from datetime import datetime
@@ -17,7 +22,10 @@ logging.basicConfig(
 logger = logging.getLogger("client")
 
 
-class APIClient(AuthMixin, CardsMixin, ReportsMixin, TransactionsMixin, ContractMixin, EwalletMixin):
+class APIClient(AuthMixin, CardsMixin, ReportsMixin,
+                TransactionsMixin, ContractMixin, EwalletMixin,
+                LimitsMixin, RestrictionsMixin, RegionLimitsMixin, CardGroupsMixin,
+                InviteMixin):
     def __init__(self, base_url: str, api_key: str, login: str, password: str):
         self.api_key = api_key
         self.login = login

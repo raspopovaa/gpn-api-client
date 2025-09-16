@@ -190,8 +190,171 @@ async def main():
     # )
     # for tx in tx_card_list.result:
     #     print(tx.timestamp, tx.sum)
+    # # Получить лимиты по договору
+    # limits = await client.get_limits(contract_id="1-2SY777F")
+    # print("Найдено лимитов:", limits.total_count)
+    # for limit in limits.result:
+    #     print(limit.contract_id, limit.card_id, limit.amount)
+
+    # # Установить лимит на карту (литры)
+    # await client.set_limit(
+    #     limits=[
+    #         {
+    #             "card_id": "98000001",
+    #             "contract_id": "1-2SY777F",
+    #             "productGroup": "1-CK235",
+    #             "productType": "1-CK231",
+    #             "amount": {"value": 123, "unit": "LIT"},
+    #             "term": {"time": {"from": "03:00", "to": "08:00"}, "days": "1111100", "type": 1},
+    #             "transactions": {"count": 40},
+    #             "time": {"number": 4, "type": 7},
+    #         }
+    #     ]
+    # )
+    #
+    # # Удалить лимит
+    # await client.remove_limit(contract_id="1-2SY777F", limit_id="1-FKFLDK1")
+
+    #
+    # # Получить ограничения по договору
+    # restrictions = await client.get_restrictions(contract_id="1-2SY777F")
+    # print("Найдено ограничителей:", restrictions.total_count)
+    # for r in restrictions.result:
+    #     print(r.id, r.productTypeName, r.restriction_type)
+
+    # # Установить ограничитель на карту
+    # await client.set_restriction(
+    #     restrictions=[
+    #         {
+    #             "card_id": "2748116",
+    #             "contract_id": "1-1N3MWYG",
+    #             "productGroup": "1-CK235",
+    #             "productType": "1-CK231",
+    #             "restriction_type": 1
+    #         }
+    #     ]
+    # )
+    #
+    # # Удалить ограничитель
+    # await client.remove_restriction(contract_id="1-B7C8D", restriction_id="15988463")
 
 
+
+    # # Получить региональные лимиты по договору
+    # limits = await client.get_region_limits(contract_id="1-2SY777F")
+    # print("Региональных лимитов:", limits.total_count)
+    # for rl in limits.result:
+    #     print(rl.id, rl.country, rl.region, rl.limit_type)
+
+    # # Установить региональный лимит на карту
+    # await client.set_region_limit(
+    #     region_limits=[
+    #         {
+    #             "card_id": "2725116",
+    #             "contract_id": "1-1N3MWYG",
+    #             "country": "RUS",
+    #             "region": "04",
+    #             "service_center": "2052059",
+    #             "limit_type": 1,
+    #         }
+    #     ]
+    # )
+    #
+    # # Удалить региональный лимит
+    # await client.remove_region_limit(contract_id="1-B7C8D", regionlimit_id="6358201")
+
+
+    # # Получение групп карт по договору
+    # groups = await client.get_card_groups(contract_id="1-2SY777F")
+    # for g in groups.result:
+    #     print(g.id, g.name, g.cards_count)
+
+    # # Создание новой группы
+    # new_group = await client.set_card_group(contract_id="1-2SY777F", name="groupcard-4")
+
+    # # Добавление карт в группу
+    # await client.set_cards_to_group(
+    #     contract_id="1-1N5MWYG",
+    #     group_id=new_group["data"]["id"],
+    #     cards_list=[{"id": "2728111", "type": "Attach"}, {"id": "2728112", "type": "Attach"}],
+    # )
+    #
+    # # Удаление группы
+    # await client.remove_card_group(contract_id="1-1N5MWYG", group_id=new_group["data"]["id"])
+
+
+
+
+    # --- v2 ---
+    # # Получить список доступных отчетов
+    # reports = await client.get_reports()
+    # for r in reports.result:
+    #     print(r.id, r.name)
+
+    # # Заказать отчет (по договору на email)
+    # order = await client.order_report(
+    #     report_id="tsc_transaction_protocol",
+    #     format="xlsx",
+    #     emails=["test@yandex.ru"],
+    #     params={"start_date": "2022-11-02", "end_date": "2022-12-01", "id_agreement": ["1-2SY777F"]},
+    # )
+    #
+    # # Список заказанных отчетов
+    # jobs = await client.get_report_jobs()
+    # for j in jobs.result:
+    #     print(j.job_id, j.report_name)
+    # #
+    # ждём 5 минут после заказа отчёта
+    #await asyncio.sleep(300)
+
+    # content = await client.download_report_file(job_id="1-2FLFKAW")
+    #
+    # with open("report.xlsx", "wb") as f:
+    #     f.write(content)
+    #
+    # # Скачиваем отчет (v1, в zip)
+    # content = await client.download_report_file_v1(job_id="1-24H0D3I", archive=True)
+    # with open("report.zip", "wb") as f:
+    #     f.write(content)
+    #
+    #
+    # # --- v1 (устаревшие) ---
+    # await client.order_report_v1(
+    #     contract_id="1-13WR9S2",
+    #     start="2017-01-01",
+    #     end="2017-01-31",
+    #     report_format="xlsx",
+    #     email="mail@mail.ru",
+    # )
+    #
+    # jobs_v1 = await client.get_report_job_list_v1()
+    # print(jobs_v1)
+
+    # # список приглашений
+    # await client.list(role="Driver", status="Active")
+
+    # # создать с отправкой
+    # await client.create({
+    #     "role": "Driver",
+    #     "mobile": "7999999999",
+    #     "contracts": [{"id": "1-FFFFF", "template_id": "1-FKFKF"}]
+    # })
+    #
+    # создать без отправки (только ссылка)
+    # await client.create({
+    #     "role": "Driver",
+    #     "email": "test@test.yy",
+    #     "cards": ["5554324", "4224443"]
+    # }, with_send=False)
+    # #
+    # # удалить
+    # await client.delete("5ddc1bd27f6e1101316dace6")
+    #
+    # # повторная отправка
+    # await client.resend("5ddc1bd27f6e1101316dace6")
+    #
+    # # продление без отправки
+    # await client.prolong("5e6fe829-ec61-4a18-8c4e-76df122979a5", with_send=False)
 
 if __name__ == "__main__":
     asyncio.run(main())

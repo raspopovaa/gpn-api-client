@@ -65,3 +65,9 @@ class AsyncTransport:
             return await self.request(method, endpoint, api_version, headers=headers, retry_auth=False, **kwargs)
 
         return self._handle_response(resp, endpoint)
+
+    async def request_stream(self, method: str, url: str, headers=None, **kwargs) -> bytes:
+        """Для скачивания бинарных файлов (PDF, XLSX, ZIP и т.д.)."""
+        async with self.client.stream(method, url, headers=headers, **kwargs) as resp:
+            resp.raise_for_status()
+            return await resp.aread()
