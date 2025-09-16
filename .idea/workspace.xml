@@ -4,25 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89f850a9-e251-45cf-a35e-d2fd612bbbab" name="Список изменений" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIv2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/models/transactions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/contract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/ewallet.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apiclientopti24/tests/__init__.py" afterDir="false" />
+    <list default="true" id="89f850a9-e251-45cf-a35e-d2fd612bbbab" name="Список изменений" comment="new repository">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiclientopti24/models/transactions.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/transactions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiclientopti24/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/transport.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/transport.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/.github/workflows/ci.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/card_group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/region_limits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/pyproject.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/restrictions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/Invites.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/card_group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/limits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/region_limits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/examples/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24/services/restrictions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/contract.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/models/user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/accounts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/card_groups.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/contracts.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/directories.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/fuel_cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/invites.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/invoices.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/limits.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/limits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/merchants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiclientopti24/models/reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/templates.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/transactions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/users.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/virtual_cards.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/services/wallet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/transport.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gazprom-client/src/gazprom_api/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +72,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="32YVMPu6sQjoxUS5TFi45mo3ZGS" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -56,6 +84,7 @@
     &quot;Python tests.Python tests for test_auth.test_auth.executor&quot;: &quot;Run&quot;,
     &quot;Python.example.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/andrejraspopov/IdeaProjects/APIv2&quot;
@@ -125,6 +154,27 @@
       <option name="presentableId" value="Default" />
       <updated>1757597447232</updated>
     </task>
+    <task id="LOCAL-00001" summary="new repository">
+      <option name="closed" value="true" />
+      <created>1757862419806</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1757862419806</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new repository">
+      <option name="closed" value="true" />
+      <created>1757862698780</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757862698780</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="new repository" />
   </component>
 </project>
