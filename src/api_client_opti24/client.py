@@ -4,7 +4,10 @@ from typing import Optional, Dict, Any, Literal
 from .services.Invites import InviteMixin
 from .services.auth import AuthMixin
 from .services.cards import CardsMixin
+from .services.dictionaries import DictionariesMixin
+from .services.final_prices import FinalPricesMixin
 from .services.reports import ReportsMixin
+from .services.templates import TemplatesMixin
 from .services.transactions import TransactionsMixin
 from .services.card_group import CardGroupsMixin
 from .services.contract import ContractMixin
@@ -12,6 +15,8 @@ from .services.ewallet import EwalletMixin
 from .services.limits import LimitsMixin
 from .services.region_limits import RegionLimitsMixin
 from .services.restrictions import RestrictionsMixin
+from .services.users import UsersMixin
+from .services.virtual_cards import VirtualCardsMixin
 from .transport import AsyncTransport
 from datetime import datetime
 from .logger import logger
@@ -28,7 +33,13 @@ class APIClient(
     RestrictionsMixin,
     RegionLimitsMixin,
     CardGroupsMixin,
-    InviteMixin
+    InviteMixin,
+    UsersMixin,
+    TemplatesMixin,
+    VirtualCardsMixin,
+    FinalPricesMixin,
+    DictionariesMixin
+
 ):
     def __init__(self, base_url: str, api_key: str, login: str, password: str):
         self.api_key = api_key

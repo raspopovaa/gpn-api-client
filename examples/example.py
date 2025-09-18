@@ -347,5 +347,164 @@ async def main():
     # # продление без отправки
     # await client.prolong("5e6fe829-ec61-4a18-8c4e-76df122979a5", with_send=False)
 
+
+    # # 📌 Список пользователей
+    # users = await client.get_users(
+    #     sort="id,login",
+    #     page=1,
+    #     on_page=5,
+    #     q="Кирилл",
+    #     filter={"role": "Driver", "active": True}
+    # )
+    # print("Список пользователей:", users)
+    #
+    # # 📌 Создание водителя без персональных данных
+    # new_user_id = await client.create_user(
+    #     uuid="62f2e267-4398-4ea2-b02e-6e88b81b0958",
+    #     mobile="7999999999"
+    # )
+    # print("Создан пользователь:", new_user_id)
+    #
+    # # 📌 Прикрепление договоров к пользователю
+    # await client.attach_contracts(
+    #     user_id=new_user_id,
+    #     contracts=[
+    #         {"sid": "1-380B94P", "template_id": "1-3BE470B", "use_mpc": True},
+    #         {"sid": "1-37PYW2D", "template_id": None},
+    #     ]
+    # )
+    # print("Договоры прикреплены")
+    #
+    # # 📌 Открепление договоров от пользователя
+    # await client.detach_contracts(
+    #     user_id=new_user_id,
+    #     contract_ids=["1-380B94P", "1-37PYW2D"]
+    # )
+    # print("Договоры откреплены")
+    #
+    # # 📌 Прикрепление карты к пользователю
+    # await client.attach_card(user_id=new_user_id, card_id="5050505")
+    # print("Карта прикреплена")
+    #
+    # # 📌 Открепление карты от пользователя
+    # await client.detach_card(user_id=new_user_id, card_id="5050505")
+    # print("Карта откреплена")
+    #
+    # # 📌 Удаление пользователя
+    # await client.delete_user(user_id=new_user_id)
+    # print("Пользователь удалён")
+    #
+    # # 📌 Выход из системы
+    # await client.logoff()
+    # print("Сессия завершена")
+
+
+    # # ---------- Шаблоны ----------
+    # templates = await client.get_templates(contract_id="1-380B94P")
+    # print("Шаблоны:", templates)
+    #
+    # new_template = await client.create_template("1-2SY777F", "Wallet", "Demo Template")
+    # print("Создан:", new_template)
+    #
+    # updated_template = await client.update_template(new_template.id, "1-2SY777F", "Limit", "Updated Demo")
+    # print("Обновлён:", updated_template)
+    #
+    # # ---------- Лимиты ----------
+    # limits = await client.get_template_limits(new_template.id)
+    # print("Лимиты:", limits)
+    #
+    # new_limit = await client.create_template_limit(new_template.id, {
+    #     "contract_id": "1-2SY777F",
+    #     "amount": {"unit": "LIT", "value": 100},
+    #     "time": {"type": 3, "number": 1}
+    # })
+    # print("Создан лимит:", new_limit)
+    #
+    # #---------- Ограничители ----------
+    # restrictions = await client.get_template_restrictions(new_template.id)
+    # print("Ограничители:", restrictions)
+    #
+    # new_restriction = await client.create_template_restriction(new_template.id, {
+    #     "contract_id": "1-2SY777F",
+    #     "product_type": "1-276PF01",
+    #     "restriction_type": 1
+    # })
+    # print("Создан ограничитель:", new_restriction)
+    #
+    # # ---------- Геоограничители ----------
+    # geos = await client.get_template_georestrictions(new_template.id)
+    # print("Геоограничители:", geos)
+    #
+    # new_geo = await client.create_template_georestriction(new_template.id, {
+    #     "contract_id": "1-2SY777F",
+    #     "country": "RUS",
+    #     "region": "45",
+    #     "restriction_type": 1
+    # })
+    # print("Создан геоограничитель:", new_geo)
+    #
+    # #---------- Удаление ----------
+    # await client.delete_template_georestriction(new_template.id, new_geo.id)
+    # await client.delete_template_restriction(new_template.id, new_restriction.id)
+    # await client.delete_template_limit(new_template.id, new_limit.id)
+    # await client.delete_template(new_template.id)
+    # print("Все сущности удалены")
+
+    # # 1. Выпуск ВК по user_id (старый метод)
+    # card = await client.create_virtual_card(user_id="1-2Q468ZB")
+    # print("Создана виртуальная карта:", card.data)
+    #
+    # # 2. Выпуск ВК с типом карты (новый метод)
+    # card2 = await client.release_virtual_card(type_="wallet")
+    # print("Выпущена ВК:", card2.data)
+    #
+    # # 3. Выпуск ВК с шаблоном и пользователем
+    # card3 = await client.release_virtual_card(template_id="1-3BDZMRJ", user_id="1-2Q468ZB")
+    # print("ВК по шаблону:", card3.data)
+    #
+    # # 4. Удаление МПК
+    # result = await client.delete_mpc(card_id=card.data.id)
+    # print("Удаление МПК:", result)
+    #
+    # # 5. Сброс счетчиков МПК
+    # reset_result = await client.reset_mpc(card_id=card.data.id, type_="ResetCounterCode")
+    # print("Сброс счетчиков:", reset_result)
+    # 1. Получение финальных цен на товары
+    # prices = await client.calculate_prices(
+    #     card_id="989666",
+    #     poi_id="366038",
+    #     goods=["00000000000007", "00000000000009"]
+    # )
+    # print("Финальные цены:")
+    # for item in prices.data.goods:
+    #     print(f"- {item.code}: {item.price} руб.")
+    #
+    # # 2. Проверка возможности покупки
+    # can_buy = await client.check_purchase(
+    #     card_id="989666",
+    #     poi_id="366038",
+    #     goods=[
+    #         {"code": "00000000000007", "quantity": 1, "price": 1.5},
+    #         {"code": "00000000000009", "quantity": 1, "price": 1.5},
+    #     ]
+    # )
+    # print("Можно ли совершить транзакцию:", can_buy.data)
+
+    # # 1. Получение списка АЗС
+    # azs = await client.get_azs(filter={"countries": ["RUS"]}, page=1, on_page=5)
+    # print(f"Найдено АЗС: {azs.total_count}")
+    # for station in azs.result:
+    #     print(f"- {station.id}: {station.name} ({station.address})")
+    #
+    # # 2. Получение фильтров для АЗС
+    # filters = await client.get_azs_filters()
+    # print("Доступные фильтры для АЗС:", filters.filters.keys())
+    #
+    # # 3. Получение справочника единиц измерения
+    # dictionary = await client.get_dictionary("Unit")
+    # print(f"Элементов в справочнике: {dictionary.total_count}")
+    # for item in dictionary.result:
+    #     print(f"- {item.id}: {item.value}")
+
 if __name__ == "__main__":
     asyncio.run(main())
