@@ -1,14 +1,46 @@
-import json
-import logging
-from typing import Optional
-
+from typing import List, Optional
 from ..decorators import api_method
+from ..models.cards import (
+    CardsListResponse,
+    CardGroupResponse,
+    CardDriversResponse,
+    CardDetailResponse,
+    IDListResponse,
+    BoolResponse,CardsV2Response
+)
 from ..logger import logger
 
+
 class CardsMixin:
+    """Методы работы с топливными картами."""
+
+    # --- Список карт (v1) ---
+    @api_method(require_session=True, default_version="v1")
+    async def get_cards_v1(
+            self, contract_id: str, cache: bool = True, api_version: str = "v1"
+    ) -> CardsListResponse:
+        """Список топливных карт (Процессинг).
+        :param contract_id: Идентификатор договора
+        :param cache: Кеш карт. false или не задан - данные берутся по прямому запросу из процессинга.
+        :return: Объект CardsListResponse с данными о картах
+
+    """
+        params = {"contract_id": contract_id, "cache": str(cache).lower()}
+        logger.info("Запрос списка карт (v1) с параметрами: %s", params)
+        data = await self._request(
+            "get",
+            "cards",
+            api_version=api_version,
+            headers=self._headers(include_session=True),
+            params=params,
+        )
+
+        return CardsListResponse(**data)
+
     @api_method(require_session=True, default_version="v2")
-    async def get_contract_cards_v2(
+    async def get_cards_v2(
             self,
+            contract_id: str,
             sort: str = "-id",
             q: str | None = None,
             status: str | None = None,
@@ -16,236 +48,182 @@ class CardsMixin:
             platon: bool | None = None,
             avtodor: bool | None = None,
             users: bool | None = None,
-            page: int = 1,
-            onpage: int = 10,
-            api_version: str = "v2",
-    ) -> dict:
-        """
-        Новый метод получения списка карт с данными
-        (например: название группы карт, статус, комментарий, существует ли МПК).
-        """
-        params: dict[str, str] = {
-            "sort": sort,
-            "page": str(page),
-            "onpage": str(onpage),
-        }
-
-        if q:
-            params["q"] = q
-        if status:
-            params["status"] = status
-        if carrier:
-            params["carrier"] = carrier
-        if platon is not None:
-            params["platon"] = str(platon).lower()
-        if avtodor is not None:
-            params["avtodor"] = str(avtodor).lower()
-        if users is not None:
-            params["users"] = str(users).lower()
-
-        return await self._request(
-            "get",
-            "cards",
-            api_version=api_version,
-            headers=self._headers(include_session=True),
-            params=params
-        )
-
-    @api_method(require_session=True, default_version="v1")
-    async def getProcessingCards(self, cache: Optional[bool] = None, api_version: str = "v1") -> dict:
-        """Получение списка карт с данными
-        (например: комментарий, дата последнего использования,
-        минимальное время меду транзакциями, тип продукта - лимитная или ЭК)."""
-        params = {}
-        if cache is not None:
-            params["cache"] = str(cache).lower()
-
-        return await self._request(
-            "get",
-            "cards",
-            api_version=api_version,
-            headers=self._headers(include_session=True),
-            params=params
-        )
-
-    @api_method(require_session=True, default_version="v1")
-    async def getGroupCards(self, contract_id: str, group_id: str, api_version: str = "v1") -> dict:
-        """Получение списка по группе карт."""
-        body = {
-            "contract_id": contract_id or self.contract_id,
-            "group_id": group_id
-        }
-
-        return await self._request(
-            "GET",
-            "cards",
-            api_version=api_version,
-            headers=self._headers(include_session=True),
-            data=body
-        )
-
-    @api_method(require_session=True, default_version="v1")
-    async def set_card_group(
-            self,
-            *,
-            name: str,
-            contract_id: str | None = None,
             group_id: str | None = None,
-            api_version: str = "v1",
-    ) -> dict:
+            page: int = None,
+            onpage: int = None,
+            api_version: str = "v2",
+    ) -> CardsV2Response:
         """
-        Создание или изменение группы карт.
-        - Если group_id не указан → создаётся новая группа
-        - Если group_id указан → обновляется существующая
+        Получение списка карт договора (v2).
+        :param contract_id: Идентификатор договора
+        :param sort: Поле сортировки (по умолчанию '-id')
+        :param q: Поисковый запрос (например, часть номера карты)
+        :param status: Фильтр по статусу карты (Active, Locked и т.д.)
+        :param carrier: Тип носителя карты ('Plastic', 'Virtual Card')
+        :param platon: Фильтр по поддержке Платон
+        :param avtodor: Фильтр по поддержке Автодор
+        :param users: Фильтр по наличию пользователей
+        :param group_id: Идентификатор группы карт (опционально)
+        :param page: Номер страницы (по умолчанию 1)
+        :param onpage: Количество элементов на странице (по умолчанию 10)
+        :return: Объект CardsV2Response с данными о картах
         """
-        body = {"name": name, "contract_id": contract_id or self.contract_id}
-        if not body["contract_id"]:
-            raise ValueError("contract_id обязателен для set_card_group")
+        params = {
+            "contract_id": contract_id,
+            "sort": sort,
+            "q": q,
+            "status": status,
+            "carrier": carrier,
+            "platon": platon,
+            "avtodor": avtodor,
+            "users": users,
+            "group_id": group_id,
+            "page": page,
+            "onpage": onpage,
+        }
 
-        if group_id:
-            body["id"] = group_id
+        # Исключаем None, чтобы не отправлять пустые параметры
+        filtered_params = {k: v for k, v in params.items() if v is not None}
 
-        return await self._request(
-            "post",
-            "setCardGroup",
+        response = await self._request(
+            "get",
+            "cards",
             api_version=api_version,
             headers=self._headers(include_session=True),
-            data=body,
+            params=filtered_params,
         )
 
+        # Возвращаем корректно типизированный объект
+        return CardsV2Response(**response["data"])
+
+
+    # --- Список карт по группе ---
+    @api_method(require_session=True, default_version="v1")
+    async def get_cards_by_group(
+            self, contract_id: str, group_id: str, api_version: str = "v1"
+    ) -> CardGroupResponse:
+        """Получение списка топливных карт по группе карт."""
+        params = {"contract_id": contract_id, "group_id": group_id}
+        logger.info("Запрос списка карт по группе: %s", params)
+        data = await self._request(
+            "get",
+            "cards",
+            api_version=api_version,
+            headers=self._headers(include_session=True),
+            params=params,
+        )
+        return CardGroupResponse(**data)
+
+    # --- Водители по карте ---
     @api_method(require_session=True, default_version="v2")
-    async def getCardDrivers(self, card_id: str, api_version: str = "v2") -> dict:
-        """Получение списка водителей."""
-        return await self._request(
-            "GET",
+    async def get_card_drivers(
+            self, card_id: str, contract_id: str, api_version: str = "v2"
+    ) -> CardDriversResponse:
+        """Получение списка водителей по карте."""
+        logger.info("Запрос водителей по карте %s для договора %s", card_id, contract_id)
+        data = await self._request(
+            "get",
             f"cards/{card_id}/drivers",
             api_version=api_version,
-            headers=self._headers(include_session=True)
+            headers=self._headers(include_session=True),
+            params={"contract_id": contract_id},
         )
+        return CardDriversResponse(**data)
+
+    # --- Детальная информация по карте ---
     @api_method(require_session=True, default_version="v1")
-    async def getCardDetails(self, card_id: str, api_version: str = "v1") -> dict:
-        """Получение детальной информации по карте (дата выпуска, тип продукта, тип карты и пр.)."""
-        params = {"contract_id": self.contract_id,
-                  "card_id": card_id}
-        return await self._request(
-            "GET",
+    async def get_card_detail(
+            self, contract_id: str, card_id: str, api_version: str = "v1"
+    ) -> CardDetailResponse:
+        """Получение детальной информации по карте."""
+        params = {"contract_id": contract_id, "card_id": card_id}
+        logger.info("Запрос детальной информации по карте: %s", params)
+        data = await self._request(
+            "get",
             "cards",
             api_version=api_version,
             headers=self._headers(include_session=True),
-            params=params
+            params=params,
         )
+        return CardDetailResponse(**data)
+
+    # --- Блокировка / разблокировка карты ---
     @api_method(require_session=True, default_version="v1")
     async def block_card(
-            self,
-            *,
-            card_ids: list[str],
-            block: bool = True,
-            contract_id: str | None = None,
-            api_version: str = "v1",
-    ) -> dict:
-        """
-        Блокировка или разблокировка карт.
-        - card_ids: список ID карт
-        - block: True = блокировка, False = разблокировка
-        """
-        cid = contract_id or self.contract_id
-        if not cid:
-            raise ValueError("contract_id обязателен для block_card")
+            self, contract_id: str, card_ids: List[str], block: bool = True, api_version: str = "v1"
+    ) -> IDListResponse:
+        """Блокировка или разблокировка топливных карт.
+        :param contract_id: Идентификатор договора
+        :param card_ids: Список идентификаторов карт
+        :param block: True для блокировки, False для разблокировки
+        return: Объект IDListResponse с результатом операции"""
 
-        body = {
-            "contract_id": cid,
-            # В API card_id передаётся как строка JSON-массива
-            "card_id": json.dumps(card_ids, ensure_ascii=False),
-            "block": str(block).lower(),
-        }
+        payload = {"contract_id": contract_id, "card_id": card_ids, "block": str(block).lower()}
+        if block == True:
+            logger.info("Блокировка карт: %s", payload)
+        else:
+            logger.info("Разблокировка карт: %s", payload)
 
-        return await self._request(
+        data = await self._request(
             "post",
             "blockCard",
             api_version=api_version,
             headers=self._headers(include_session=True),
-            data=body,
+            data=payload,
         )
+        return IDListResponse(**data)
 
+    # --- Установка комментария ---
     @api_method(require_session=True, default_version="v1")
     async def set_card_comment(
-            self,
-            *,
-            card_id: str,
-            comment: str,
-            contract_id: str | None = None,
-            api_version: str = "v1",
-    ) -> dict:
-        """
-        Установить комментарий на карту (v1).
-        """
-        cid = contract_id or self.contract_id
-        if not cid:
-            raise ValueError("contract_id обязателен для set_card_comment")
-
-        body = {
-            "card_id": card_id,
-            "contract_id": cid,
-            "comment": comment,
-        }
-
-        return await self._request(
+            self, card_id: str, contract_id: str, comment: str, api_version: str = "v1"
+    ) -> BoolResponse:
+        """Установить комментарий на топливную карту."""
+        payload = {"card_id": card_id, "contract_id": contract_id, "comment": comment}
+        logger.info("Установка комментария на карту: %s", payload)
+        data = await self._request(
             "post",
             "setCardComment",
             api_version=api_version,
             headers=self._headers(include_session=True),
-            data=body,
+            data=payload,
         )
+        return BoolResponse(**data)
 
+    # --- Запрос одноразового кода для сброса PIN ---
     @api_method(require_session=True, default_version="v2")
-    async def request_reset_pin(
-            self,
-            *,
-            card_id: str,
-            contract_id: str | None = None,
-            api_version: str = "v2",
-    ) -> dict:
+    async def verify_pin(self, card_id: str, contract_id: str, api_version: str = "v2") -> BoolResponse:
+        """ Запрос одноразового кода для сброса PIN карты.
+        Данный метод позволяет инициировать запрос на сброс попыток некорректного ввода PIN – кода пластиковой топливной карты на АЗС.
+        Вам будет отправлено письмо с кодом подтверждения на почту, которая привязана к вашей учетной записи.
+        Данный код нужно ввести в метод resetPIN для завершения операции сброса попыток.
         """
-        Запрос одноразового кода для сброса попыток ввода PIN карты (v2).
-        После вызова на email пользователя придёт код, который нужно
-        подтвердить методом resetPIN.
-        """
-        cid = contract_id or self.contract_id
-        if not cid:
-            raise ValueError("contract_id обязателен для request_reset_pin")
-
-        body = {"contract_id": cid}
-
-        return await self._request(
+        logger.info("Запрос(verifyPIN) одноразового кода для сброса PIN карты %s", card_id)
+        data = await self._request(
             "post",
             f"cards/{card_id}/verifyPIN",
             api_version=api_version,
             headers=self._headers(include_session=True),
-            data=body,
+            params={"contract_id": contract_id},
         )
+        return BoolResponse(**data)
+
+    # --- Подтверждение сброса PIN ---
     @api_method(require_session=True, default_version="v2")
     async def reset_pin(
-            self,
-            *,
-            card_id: str,
-            code: str,
-            contract_id: str | None = None,
-            api_version: str = "v2",
-    ) -> dict:
+            self, card_id: str, contract_id: str, code: str, api_version: str = "v2"
+    ) -> BoolResponse:
+        """ Подтверждение сброса PIN карты.
+        Данный метод позволяет завершить операцию со сбросом попыток некорректного ввода PIN – кода пластиковой топливной карты на АЗС.
+        Код подтверждения будет отправлен на почту, которая привязана к вашей учетной записи.
         """
-        Подтверждение сброса PIN карты (v2).
-        Завершает операцию сброса после вызова request_reset_pin().
-        """
-        cid = contract_id or self.contract_id
-        if not cid:
-            raise ValueError("contract_id обязателен для reset_pin")
-
-        body = {"contract_id": cid, "code": code}
-
-        return await self._request(
+        payload = {"contract_id": contract_id, "code": code}
+        logger.info("Запрос resetPIN для карты %s", card_id)
+        data = await self._request(
             "post",
             f"cards/{card_id}/resetPIN",
             api_version=api_version,
             headers=self._headers(include_session=True),
-            data=body,
+            data=payload,
         )
+        return BoolResponse(**data)

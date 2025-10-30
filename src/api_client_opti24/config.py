@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_URL = os.getenv("API_BASE_URL", "https://api-demo.opti-24.ru/vip/")
+BASE_URL = os.getenv("API_BASE_URL")
 API_KEY = os.getenv("API_KEY")
 LOGIN = os.getenv("API_LOGIN")
 PASSWORD = os.getenv("API_PASSWORD")

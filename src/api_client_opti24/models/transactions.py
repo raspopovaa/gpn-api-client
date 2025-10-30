@@ -1,84 +1,108 @@
+from pydantic import BaseModel, Field
 from typing import List, Optional
-from pydantic import BaseModel, Field, ConfigDict
+from datetime import datetime
 
+
+# ============================================================
+# Общие структуры
+# ============================================================
 
 class TransactionItem(BaseModel):
-    model_config = ConfigDict(extra_forbid=True)
-    """
-     Элемент транзакции (товар/услуга).
-    
-     Attributes:
-         id (str): Уникальный идентификатор элемента.
-         product (Optional[str]): Название товара или услуги.
-     """
-    id: str
-    rrn: Optional[str] = None
-    product: Optional[str] = None
-    amount: Optional[float] = None
-    price: Optional[float] = None
-    base_cost: Optional[float] = None
-    cost: Optional[float] = None
-    discount: Optional[float] = None
-    discount_cost: Optional[float] = None
-    transaction: Optional[str] = None
-    currency: Optional[str] = None
-    unit: Optional[str] = None
+    """Позиция (товар) внутри транзакции."""
+    id: str = Field(..., description="ID позиции транзакции")
+    rrn: str = Field(..., description="Уникальный номер RRN")
+    product: str = Field(..., description="Наименование продукта (топлива)")
+    amount: str = Field(..., description="Количество продукта")
+    price: str = Field(..., description="Цена за единицу")
+    base_cost: str = Field(..., description="Базовая стоимость")
+    cost: str = Field(..., description="Итоговая стоимость с учетом скидки")
+    discount: str = Field(..., description="Скидка по позиции")
+    discount_cost: str = Field(..., description="Стоимость с учётом скидки")
+    transaction: str = Field(..., description="ID транзакции")
+    currency: str = Field(..., description="Валюта")
+    unit: str = Field(..., description="Единица измерения")
 
 
-class TransactionRequestInfo(BaseModel):
-    model_config = ConfigDict(extra_forbid=True)
-
-    type: Optional[str] = None
-    name: Optional[str] = None
-
-
-class Transaction(BaseModel):
-    model_config = ConfigDict(extra_forbid=True)
-
-    id: str
-    time: Optional[str] = None  # v1
-    host_date: Optional[str] = None  # v1
-    timestamp: Optional[str] = None  # v2
-    utc_time: Optional[str] = None  # v2
-    currency: Optional[str] = None
-    card_id: Optional[str] = None
-    card_number: Optional[str] = None
-    service_center: Optional[str] = None
-    terminal_id: Optional[str] = None
-    poi_id: Optional[str] = None
-    base_cost: Optional[float] = None
-    cost: Optional[float] = None
-    discount: Optional[float] = None
-    discount_cost: Optional[float] = None
-    incoming: Optional[bool] = None
-    request: Optional[TransactionRequestInfo] = None
-    transaction_items: List[TransactionItem] = Field(default_factory=list)
-    qty: Optional[float] = None  # v2
-    price: Optional[float] = None  # v2
-    price_no_discount: Optional[float] = None
-    sum: Optional[float] = None
-    sum_no_discount: Optional[float] = None
-    is_storno: Optional[bool] = None
-    is_manual_corrention: Optional[bool] = None
-    payment_type: Optional[str] = None
-    product_id: Optional[str] = None
-    product_name: Optional[str] = None
-    product_category_id: Optional[str] = None
-    check_id: Optional[int] = None
-    stor_transaction_id: Optional[int] = None
-    exchange_rate: Optional[float] = None
+class RequestInfo(BaseModel):
+    """Информация о типе и названии запроса."""
+    type: str = Field(..., description="Тип операции (например, Advice)")
+    name: str = Field(..., description="Название операции (например, Покупка)")
 
 
-class TransactionList(BaseModel):
-    """
-     Список транзакций по договору.
+class TransactionV1(BaseModel):
+    """Транзакция для версии v1."""
+    id: str = Field(..., description="ID транзакции")
+    time: datetime = Field(..., description="Дата и время транзакции")
+    host_date: datetime = Field(..., description="Дата и время на хосте")
+    currency: str = Field(..., description="Код валюты (например, 810)")
+    card_id: str = Field(..., description="ID карты")
+    service_center: str = Field(..., description="ID сервисного центра (АЗС)")
+    card_number: str = Field(..., description="Номер карты")
+    base_cost: str = Field(..., description="Базовая стоимость транзакции")
+    cost: str = Field(..., description="Фактическая стоимость с учётом скидок")
+    discount: str = Field(..., description="Размер скидки")
+    discount_cost: str = Field(..., description="Стоимость после применения скидки")
+    incoming: bool = Field(..., description="Признак входящей транзакции")
+    request: RequestInfo = Field(..., description="Информация о типе операции")
+    transaction_items: List[TransactionItem] = Field(..., description="Список товаров в транзакции")
 
-     Attributes:
-         total_count (int): Общее количество транзакций.
-         result (List[Transaction]): Список транзакций.
 
-     """
-    model_config = ConfigDict(extra_forbid=True)
+class TransactionItemV2(BaseModel):
+    """Позиция в транзакции (v2)."""
+    id: int = Field(..., description="ID транзакции")
+    timestamp: datetime = Field(..., description="Время транзакции (локальное)")
+    utc_time: datetime = Field(..., description="Время транзакции в UTC")
+    card_id: str = Field(..., description="ID карты")
+    poi_id: str = Field(..., description="ID точки продаж (АЗС)")
+    terminal_id: str = Field(..., description="ID терминала")
+    type: str = Field(..., description="Тип операции (P — покупка, R — возврат)")
+    product_id: str = Field(..., description="ID продукта")
+    product_name: str = Field(..., description="Наименование продукта")
+    product_category_id: str = Field(..., description="Категория продукта (например, НП)")
+    currency: str = Field(..., description="Код валюты (например, RUR)")
+    check_id: int = Field(..., description="Номер чека")
+    stor_transaction_id: int = Field(..., description="ID сторнируемой транзакции")
+    is_storno: bool = Field(..., description="Признак сторно")
+    is_manual_corrention: bool = Field(..., description="Признак ручной корректировки")
+    qty: float = Field(..., description="Количество")
+    price: float = Field(..., description="Цена за единицу")
+    price_no_discount: float = Field(..., description="Цена без скидки")
+    sum: float = Field(..., description="Сумма с учетом скидки")
+    sum_no_discount: float = Field(..., description="Сумма без скидки")
+    discount: float = Field(..., description="Размер скидки")
+    exchange_rate: float = Field(..., description="Курс обмена")
+    card_number: str = Field(..., description="Номер карты")
+    payment_type: str = Field(..., description="Тип оплаты (например, Карта)")
 
-    total_count: int
-    result: List[Transaction] = Field(default_factory=list)
+
+# ============================================================
+# Ответы API
+# ============================================================
+
+class TransactionsV1Data(BaseModel):
+    total_count: int = Field(..., description="Общее количество транзакций")
+    result: List[TransactionV1] = Field(..., description="Список транзакций")
+
+
+class TransactionsV1Response(BaseModel):
+    status: dict = Field(..., description="Статус ответа")
+    data: TransactionsV1Data = Field(..., description="Данные ответа")
+    timestamp: int = Field(..., description="Метка времени сервера")
+
+
+class TransactionsV2Data(BaseModel):
+    total_count: int = Field(..., description="Общее количество транзакций")
+    result: List[TransactionItemV2] = Field(..., description="Список транзакций (v2)")
+
+
+class TransactionsV2Response(BaseModel):
+    status: dict = Field(..., description="Статус ответа")
+    data: TransactionsV2Data = Field(..., description="Данные ответа")
+    timestamp: int = Field(..., description="Метка времени сервера")
+
+
+class TransactionDetailResponse(BaseModel):
+    """Ответ метода получения детальной информации по транзакции (v2)."""
+    status: dict = Field(..., description="Статус ответа")
+    data: TransactionsV2Data = Field(..., description="Информация по одной транзакции")
+    timestamp: int = Field(..., description="Метка времени сервера")

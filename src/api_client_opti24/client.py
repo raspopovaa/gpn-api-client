@@ -54,13 +54,14 @@ class APIClient(
         headers = {
             "api_key": self.api_key,
             "date_time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "User-Agent": "Mozilla/5.0",
+            "User-Agent": "apiclientopti24",
             "Content-Type": "application/json" if content_type_json else "application/x-www-form-urlencoded",
         }
         if include_session and self.session_id:
             headers["session_id"] = self.session_id
         if self.contract_id:
             headers["contract_id"] = self.contract_id
+        logger.info(headers)
         return headers
 
     async def _request(self, *args, **kwargs):

@@ -1,6 +1,6 @@
 from typing import Optional, List, Dict
 from ..decorators import api_method
-from src.api_client_opti24.models.region_limits import RegionLimitList
+from src.api_client_opti24.models.region_limits import RegionLimitList, RemoveRegionLimit, RegionLimitResponse
 
 
 class RegionLimitsMixin:
@@ -33,7 +33,7 @@ class RegionLimitsMixin:
             headers=self._headers(include_session=True),
             params=params,
         )
-        return RegionLimitList(**raw.get("data", {}))
+        return RegionLimitResponse(**raw)
 
     @api_method(require_session=True, default_version="v1")
     async def set_region_limit(
@@ -72,10 +72,11 @@ class RegionLimitsMixin:
         if group_id:
             body["group_id"] = group_id
 
-        return await self._request(
+        raw = await self._request(
             "post",
             "removeRegionLimit",
             api_version=api_version,
             headers=self._headers(include_session=True),
             data=body,
         )
+        return RemoveRegionLimit(**raw)

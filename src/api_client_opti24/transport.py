@@ -1,3 +1,4 @@
+import json
 import httpx
 from .logger import logger
 from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
@@ -13,30 +14,42 @@ class AsyncTransport:
         self.client = httpx.AsyncClient(timeout=30)
         self._parent = client
 
-
     def _build_url(self, api_version: str, endpoint: str) -> str:
+        logger.info(f"{self.base_url}{api_version}/{endpoint.lstrip('/')}")
         return f"{self.base_url}{api_version}/{endpoint.lstrip('/')}"
 
-    def _handle_response(self, resp: httpx.Response , endpoint: str) -> dict or list:
+    def _safe_json(self, resp):
+        """
+        Безопасное получение JSON из ответа.
+        При ошибке возвращает текст ответа.
+        """
+        try:
+            return resp.json()
+        except Exception as e:
+            logger.warning(f"⚠️ Ошибка парсинга JSON: {e}")
+            return resp.text
+
+    def _handle_response(self, resp: httpx.Response, endpoint: str) -> dict | list | str | None:
         if 200 <= resp.status_code < 300:
-            try:
-                return resp.json()
-            except Exception:
-                return resp.text
-        elif resp.status_code == 400:
-            raise ValidationError(resp.status_code, "Некорректные данные", resp.json(), endpoint = endpoint)
+            return self._safe_json(resp)
+
+        body = self._safe_json(resp)
+        logger.error(f"❌ Ошибка API {resp.status_code} на {endpoint}, тело ответа: {body}")
+
+        if resp.status_code == 400:
+            raise ValidationError(resp.status_code, "Некорректные данные", body, endpoint=endpoint)
         elif resp.status_code == 401:
-            raise NotAuthenticatedError(resp.status_code, "Необходима авторизация", resp.json(), endpoint = endpoint)
+            raise NotAuthenticatedError(resp.status_code, "Необходима авторизация", body, endpoint=endpoint)
         elif resp.status_code == 403:
-            raise AccessDeniedError(resp.status_code, "Доступ запрещен", resp.json(), endpoint = endpoint)
+            raise AccessDeniedError(resp.status_code, "Доступ запрещен", body, endpoint=endpoint)
         elif resp.status_code == 404:
-            raise NotFoundError(resp.status_code, "Ресурс не найден", resp.json(), endpoint = endpoint)
+            raise NotFoundError(resp.status_code, "Ресурс не найден", body, endpoint=endpoint)
         elif resp.status_code == 409:
-            raise DuplicateConflictError(resp.status_code, "Конфликт", resp.json(), endpoint = endpoint)
+            raise DuplicateConflictError(resp.status_code, "Конфликт", body, endpoint=endpoint)
         elif 500 <= resp.status_code < 600:
-            raise ServerError(resp.status_code,  "Ошибка сервера", resp.text, endpoint = endpoint)
+            raise ServerError(resp.status_code, "Ошибка сервера", body, endpoint=endpoint)
         else:
-            raise APIError(resp.status_code,  "Неизвестная ошибка", resp.text, endpoint = endpoint)
+            raise APIError(resp.status_code, "Неизвестная ошибка", body, endpoint=endpoint)
 
     @retry(
         reraise=True,
@@ -47,7 +60,7 @@ class AsyncTransport:
     async def request(self, method: str, endpoint: str, api_version: str = "v1", headers=None, retry_auth: bool = True, **kwargs):
         url = self._build_url(api_version, endpoint)
         resp = await self.client.request(method, url, headers=headers, **kwargs)
-        logger.info(resp.status_code)
+        logger.info(f"HTTP {method} {url} → {resp.status_code}")
 
         if resp.status_code == 401 and retry_auth:
             await self._parent.auth_user()

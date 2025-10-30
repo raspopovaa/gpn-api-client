@@ -1,13 +1,20 @@
 from typing import Optional, List, Dict
+import json
 from ..decorators import api_method
-from src.api_client_opti24.models.restrictions import RestrictionList
+from src.api_client_opti24.models.restrictions import (
+    RestrictionGetResponse,
+    RestrictionSetResponse,
+    RestrictionRemoveResponse,
+)
 from ..logger import logger
+
 
 class RestrictionsMixin:
     """
     Методы для работы с товарными ограничителями (v1).
     """
 
+    # ---------------- Запрос ----------------
     @api_method(require_session=True, default_version="v1")
     async def get_restrictions(
             self,
@@ -16,7 +23,7 @@ class RestrictionsMixin:
             card_id: Optional[str] = None,
             group_id: Optional[str] = None,
             api_version: str = "v1",
-    ) -> RestrictionList:
+    ) -> RestrictionGetResponse:
         """
         Получение списка товарных ограничителей по договору, карте или группе карт.
         """
@@ -33,22 +40,28 @@ class RestrictionsMixin:
             headers=self._headers(include_session=True),
             params=params,
         )
-        return RestrictionList(**raw.get("data", {}))
 
+        logger.debug(f"GET /restriction response: {raw}")
+        return RestrictionGetResponse(**raw)
+
+    # ---------------- Установка ----------------
     @api_method(require_session=True, default_version="v1")
     async def set_restriction(
             self,
             *,
             restrictions: List[Dict],
             api_version: str = "v1",
-    ) -> dict:
+    ) -> RestrictionSetResponse:
         """
-        Установка/изменение товарного ограничителя по карте или группе карт.
+        Установка или изменение товарного ограничителя по карте или группе карт.
         Для изменения ограничителя необходимо передавать его ID.
         """
-        body = {"restriction": str(restrictions).replace("'", '"')}
+        if not restrictions:
+            raise ValueError("Список restrictions не может быть пустым")
 
-        return await self._request(
+        body = {"restriction": json.dumps(restrictions, ensure_ascii=False)}
+
+        raw = await self._request(
             "post",
             "setRestriction",
             api_version=api_version,
@@ -56,6 +69,10 @@ class RestrictionsMixin:
             data=body,
         )
 
+        logger.debug(f"POST /setRestriction response: {raw}")
+        return RestrictionSetResponse(**raw)
+
+    # ---------------- Удаление ----------------
     @api_method(require_session=True, default_version="v1")
     async def remove_restriction(
             self,
@@ -64,18 +81,24 @@ class RestrictionsMixin:
             restriction_id: str,
             group_id: Optional[str] = None,
             api_version: str = "v1",
-    ) -> dict:
+    ) -> RestrictionRemoveResponse:
         """
         Удаление товарного ограничителя по карте или группе карт.
         """
-        body = {"restriction_id": restriction_id, "contract_id": contract_id}
+        body = {
+            "restriction_id": restriction_id,
+            "contract_id": contract_id,
+        }
         if group_id:
             body["group_id"] = group_id
 
-        return await self._request(
+        raw = await self._request(
             "post",
             "removeRestriction",
             api_version=api_version,
             headers=self._headers(include_session=True),
             data=body,
         )
+
+        logger.debug(f"POST /removeRestriction response: {raw}")
+        return RestrictionRemoveResponse(**raw)

@@ -18,17 +18,21 @@ class AuthMixin:
         Другими словами, пользователь "выходит" из профиля (аналогично кнопке выхода в ЛК). '''
         return await self._request("get", "logoff", api_version=api_version, headers=self._headers(include_session=True))
 
-    async def get_info(self, period: str | None = None)->dict:
+    @api_method(require_session=True, default_version="v1")
+    async def get_info(self, api_version: str = "v1", period: str | None = None, )->dict:
         '''Получение статистических данных по вызовам всех методов.'''
         if period is None:
             period = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        return await self._request(
+        data = await self._request(
             "get",
             "info",
             api_version="v1",
             headers=self._headers(include_session=True),
             params={"period": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  # можно указать день "2018-10-20"
         )
+
+        return GetInfoResponse(**data)
+
 
 
     @api_method(require_session=False, default_version="v1")
@@ -58,17 +62,16 @@ class AuthMixin:
             headers=self._headers(),
             data=payload
         )
-
         self.session_id = data["data"]["session_id"]
 
         # Автовыбор контракта (оставляем только id и number)
         # Используем модель Pydantic
-        auth_response = AuthUserResponse(**data.get("data", {}))
+        auth_response = AuthUserResponse(**data)
 
         # Теперь работаем с атрибутами модели
         contracts = [
             {"id": item.id, "number": item.number}
-            for item in auth_response.contracts
+            for item in auth_response.data.contracts
         ]
 
         selected = None
