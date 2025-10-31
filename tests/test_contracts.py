@@ -1,6 +1,6 @@
 import pytest
-from src.api_client_opti24.services.contract import ContractMixin
-from src.api_client_opti24.models.contracts import ContractResponse
+from api_client_opti24.services.contract import ContractMixin
+from api_client_opti24.models import ContractResponse
 
 
 class MockContractClient(ContractMixin):

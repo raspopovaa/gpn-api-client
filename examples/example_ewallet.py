@@ -1,8 +1,6 @@
-import asyncio, json
-from http.client import responses
+import asyncio
 
-from src.api_client_opti24 import APIClient
-from src.api_client_opti24.config import *
+from api_client_opti24 import *
 
 
 async def main():

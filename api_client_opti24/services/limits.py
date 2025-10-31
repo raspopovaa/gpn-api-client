@@ -2,7 +2,7 @@ import json
 from typing import Optional, List, Dict
 from ..decorators import api_method
 from ..logger import logger
-from src.api_client_opti24.models.limits import (
+from api_client_opti24.models.limits import (
     LimitsResponse,
     SetLimitResponse,
     RemoveLimitResponse,

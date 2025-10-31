@@ -1,6 +1,6 @@
 from typing import Optional, List, Dict
 from ..decorators import api_method
-from src.api_client_opti24.models.region_limits import RegionLimitList, RemoveRegionLimit, RegionLimitResponse
+from api_client_opti24.models.region_limits import RegionLimitList, RemoveRegionLimit, RegionLimitResponse
 
 
 class RegionLimitsMixin:

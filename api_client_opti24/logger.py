@@ -1,5 +1,5 @@
 import logging
-from src.api_client_opti24.config import LOG_LEVEL, LOGGER_FILE
+from api_client_opti24.config import LOG_LEVEL, LOGGER_FILE
 log_level = getattr(logging, LOG_LEVEL.upper(), logging.INFO)
 logging.basicConfig(
     level=log_level,

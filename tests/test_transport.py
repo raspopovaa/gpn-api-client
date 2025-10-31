@@ -1,7 +1,7 @@
 import pytest
 from httpx import Response, Request
-from src.api_client_opti24.transport import AsyncTransport
-from src.api_client_opti24.errors import AccessDeniedError, NotFoundError, ServerError, APIError
+from api_client_opti24 import AsyncTransport
+from api_client_opti24.errors import AccessDeniedError, NotFoundError, ServerError, APIError
 
 
 class DummyResp(Response):

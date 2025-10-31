@@ -1,7 +1,7 @@
 from typing import Optional, List, Dict
 import json
 from ..decorators import api_method
-from src.api_client_opti24.models.restrictions import (
+from api_client_opti24.models.restrictions import (
     RestrictionGetResponse,
     RestrictionSetResponse,
     RestrictionRemoveResponse,

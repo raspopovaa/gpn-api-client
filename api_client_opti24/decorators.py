@@ -1,6 +1,4 @@
 import functools
-import logging
-from src.api_client_opti24.config import *
 from .logger import logger
 #
 #

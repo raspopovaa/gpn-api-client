@@ -1,7 +1,6 @@
 import pytest
-from unittest.mock import AsyncMock
-from src.api_client_opti24.services.auth import AuthMixin
-from src.api_client_opti24.models.auth import AuthUserResponse
+from api_client_opti24.services import AuthMixin
+from api_client_opti24.models.auth import AuthUserResponse
 
 
 class DummyClient(AuthMixin):

@@ -1,14 +1,10 @@
 import pytest
-import httpx
-from types import SimpleNamespace
 
-from src.api_client_opti24.services.cards import CardsMixin
-from src.api_client_opti24.models.cards import (
+from api_client_opti24.services.cards import CardsMixin
+from api_client_opti24.models.cards import (
     CardsV2Response,
     CardsV1Response,
-    CardGroupResponse,
     CardDriversResponse,
-    CardDetailResponse,
 )
 
 

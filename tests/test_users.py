@@ -1,6 +1,6 @@
 import pytest
-from src.api_client_opti24.services.users import UsersMixin
-from src.api_client_opti24.models.users import UsersListResponse
+from api_client_opti24.services.users import UsersMixin
+from api_client_opti24.models.users import UsersListResponse
 
 
 class DummyClient(UsersMixin):
