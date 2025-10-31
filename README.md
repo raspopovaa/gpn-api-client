@@ -28,28 +28,33 @@ pip install gpn-api-client
 
 ### ⚡ Минимальный пример
 ```python
-from gpn_api_client import GPNClient
-from gpn_api_client.models import CardFilter
+import asyncio
+from api_client_opti24 import *
 
-# 1. Инициализация клиента
-client = GPNClient(
-    base_url="https://api.example.com",
-    api_key="your-api-key",
-    login="your-login", 
-    password="your-password"
-)
 
-# 2. Аутентификация
-client.authenticate()
+async def main():
+    client = APIClient(
+        base_url=BASE_URL,   # твой URL API
+        api_key=API_KEY,
+        login=LOGIN,
+        password=PASSWORD
+    )
 
-# 3. Работа с API
-cards = client.cards.get_list(
-    filter=CardFilter(status="ACTIVE"),
-    page=1,
-    on_page=10
-)
-
-print(f"🎉 Найдено {len(cards['data'])} активных карт!")
+    # Авторизация пользователя
+    auth_response = await client.auth_user()
+    print("===АВТОРИЗАЦИЯ===")
+    print(auth_response.data.contracts[0])
+    #auth_response = await client.auth_user()
+    #Получение статистики
+    info_response = await client.get_info()
+    print("=== Cтатистика ===")
+    print(info_response.data.client_info)
+    print(info_response.data.methods)
+    logoff_response = await client.logoff()
+    print("=== LOGOFF ===")
+    print(logoff_response)
+if __name__ == "__main__":
+        asyncio.run(main())
 ```
 
 ## 📖 Документация
