@@ -1,12 +1,16 @@
-<meta name="yandex-verification" content="087afd87268797c1" />
+
 # ⛽ APIClientOPTI24
-Этот SDK не является официальным продуктом АО «Газпром нефть».
+APIClientOPTI24 SDK — библиотека для работы с API топливных карт Газпромнефть (![Сайт]([https://img.shields.io/pypi/dm/gpn-api-client](https://opti-24.ru/products/api/)). 
+APIClientOPTI24 упрощает интеграцию с топливными картами для корпоративных клиентов.
+
+Не является официальным продуктом АО «Газпром нефть».
 Используйте API в соответствии с официальной документацией и правилами использования.
 
 ![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Tests](https://img.shields.io/github/actions/workflow/status/your-username/gpn-api-client/ci.yml)
 ![Downloads](https://img.shields.io/pypi/dm/gpn-api-client)
+
 
 ## 🚀 Возможности
 
