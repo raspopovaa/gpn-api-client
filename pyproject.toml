@@ -5,7 +5,7 @@ description = "Async API клиент для работы с сервисом т
 authors = ["andrey.raspopov@gmail.com"]
 readme = "README.md"
 license = "MIT"
-packages = [{ include = "api_client_opti24", from = "src" }]
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
