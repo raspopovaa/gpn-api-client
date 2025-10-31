@@ -1,5 +1,6 @@
 # ⛽ APIClientOPTI24 
-· Python SDK для Газпромнефть
+Этот SDK не является официальным продуктом АО «Газпром нефть». 
+Используйте API в соответствии с официальной документацией и правилами использования.
 
 ![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
