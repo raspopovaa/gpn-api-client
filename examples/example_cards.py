@@ -1,6 +1,6 @@
 import asyncio
 from api_client_opti24 import APIClient
-from api_client_opti24 import BASE_URL, API_KEY, LOGIN, PASSWORD
+from api_client_opti24.config import BASE_URL, API_KEY, LOGIN, PASSWORD
 
 
 async def main():

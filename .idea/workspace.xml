@@ -4,15 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89f850a9-e251-45cf-a35e-d2fd612bbbab" name="Список изменений" comment="add new methods">
-      <change afterPath="$PROJECT_DIR$/examples/example_group_cards.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/examples/example_reports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gigaide/gigaide.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gigaide/gigaide.properties" afterDir="false" />
+    <list default="true" id="89f850a9-e251-45cf-a35e-d2fd612bbbab" name="Список изменений" comment="remove srv">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api_client_opti24/models/card_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api_client_opti24/models/card_group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api_client_opti24/models/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api_client_opti24/models/reports.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api_client_opti24/services/card_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api_client_opti24/services/card_group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api_client_opti24/services/reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api_client_opti24/services/reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_cards.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_cards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_contract.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_contract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_ewallet.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_ewallet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_group_cards.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_group_cards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_limits.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_limits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_region_limits.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_region_limits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_reports.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_reports.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_restrictions.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_restrictions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/example_transactions.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/example_transactions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "raspopovaa"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/raspopovaa/gpn-api-client.git",
+    "accountId": "f2aad88f-9de0-4db0-b0a4-1e50eed66a51"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -94,10 +112,10 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/examples" />
       <recent name="$PROJECT_DIR$/examples2" />
       <recent name="$PROJECT_DIR$/src/api_client_opti24" />
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/apiclientopti24/src/api_client_opti24" />
     </key>
   </component>
@@ -294,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761844787060</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="remove srv">
+      <option name="closed" value="true" />
+      <created>1761925944604</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1761925944604</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -338,6 +364,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new repository" />
     <MESSAGE value="add new methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="add new methods" />
+    <MESSAGE value="remove srv" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove srv" />
   </component>
 </project>
