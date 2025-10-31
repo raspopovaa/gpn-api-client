@@ -1,6 +1,6 @@
 
 # ⛽ APIClientOPTI24
-APIClientOPTI24 SDK — библиотека для работы с API топливных карт Газпромнефть (![Сайт]([https://img.shields.io/pypi/dm/gpn-api-client](https://opti-24.ru/products/api/)). 
+APIClientOPTI24 SDK — библиотека для работы с API топливных карт Газпромнефть (![Сайт](https://opti-24.ru/products/api/). 
 APIClientOPTI24 упрощает интеграцию с топливными картами для корпоративных клиентов.
 
 Не является официальным продуктом АО «Газпром нефть».
